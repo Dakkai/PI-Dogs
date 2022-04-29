@@ -10,18 +10,18 @@ module.exports = {
       // const Edad = dog.life_span.split("y")[0].split("-")
       const Peso = dog.weight.metric.split("-");
       const Altura = dog.height.metric.split("-");
-      const temperament = dog.temperament ? dog.temperament.split(",") : null;
+      const temperament = dog.temperament ? dog.temperament.split(",").map(temp => temp.trim()) : null;
       return {
         id: dog.id,
-        name: dog.name,
-        pesoMin: Peso[0],
-        pesoMax: Peso[1],
-        alturamin: Altura[0],
-        alturamax: Altura[1],
+        name: dog.name.toLowerCase(),
+        pesoMin: parseInt(Peso[0]),
+        pesoMax: parseInt(Peso[1]),
+        alturamin: parseInt(Altura[0]),
+        alturamax: parseInt(Altura[1]),
         imagen: dog.image.url,
         life_span: dog.life_span,
-        temperamento: temperament,
-        InDB : false
+        Temperamentos: temperament,
+        In : "API"
       };
     });
     return dogsmap;},
@@ -31,11 +31,29 @@ module.exports = {
     const Dbget = await Dog.findAll({
       include: {
         model: Temperamento,
-        atributes: ["nombre"],
-        through: { attributes: [] },
+        atributes: ["nombre","id"],
       },
     })
-    return Dbget
+    const DogsDB = Dbget.map(dog=> {
+     let temps = dog.Temperamentos.map(temp=> {return temp.nombre})
+     console.log(temps)
+      return{
+        id: dog.id,
+        name: dog.name.toLowerCase(),
+        pesoMin: dog.pesoMin,
+        pesoMax: dog.pesoMax,
+        AlturaMin: dog.AlturaMin,
+        AlturaMax: dog.AlturaMax,
+        img: dog.img,
+        life_span: dog.life_span,
+        In: "DB",
+        Temperamentos: temps
+
+      }
+    })
+    
+  
+    return DogsDB
   },
 
 };

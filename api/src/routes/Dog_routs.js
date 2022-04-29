@@ -19,6 +19,7 @@ router.get("/", async (req,res,next)=>{
         }
         
     } catch (error) {
+        console.log(error);
         next(error)
     }
 })
@@ -28,7 +29,8 @@ router.get("/:idraza", async (req,res,next)=>{
 
     const apiInfo = await GetapiInfo()
     const DbInfo = await GetDbInfo()
-    const TotalInfo = DbInfo.concat(apiInfo)
+    const TotalInfo = apiInfo.concat(DbInfo)
+
     try {
         let dogsFilter = await TotalInfo.filter(dog => dog.id == idraza);
         if(!dogsFilter.length){
@@ -40,6 +42,7 @@ router.get("/:idraza", async (req,res,next)=>{
         
         
     } catch (error) {
+        console.log(error);
         next(error)
     }
 
@@ -57,24 +60,30 @@ router.post("/", async (req,res,next)=>{
         img,
         life_span,
         temperamentos,
-        Indb
+        In
     } = req.body
-    const createdDog = await Dog.create({
-        name,
-        pesoMin,
-        pesoMax,
-        AlturaMax,
-        AlturaMin,
-        life_span,
-        img,
-        Indb
-    })
-    temperamentos.map(async el => createdDog.addTemperamento( await Temperamento.findOne({
-        where:{nombre : el}
-    })))
-
-
-    res.send("creado")
+    try {
+        const createdDog = await Dog.create({
+            name,
+            pesoMin,
+            pesoMax,
+            AlturaMax,
+            AlturaMin,
+            life_span,
+            img,
+            In
+        })
+        temperamentos.map(async el => createdDog.addTemperamento( await Temperamento.findOne({
+            where:{nombre : el}
+        })))
+    
+    
+        res.send("creado")
+        
+    } catch (error) {
+        console.log(error);
+        next(error)
+    }
 })
 
 

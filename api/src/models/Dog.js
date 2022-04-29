@@ -32,9 +32,9 @@ module.exports = (sequelize) => {
     life_span:{
       type: DataTypes.STRING,
     },
-    Indb:{
-      type: DataTypes.BOOLEAN,
-      defaultValue: true
+    In:{
+      type: DataTypes.STRING,
+      defaultValue: "DB"
     },
     img:{
       type: DataTypes.STRING
