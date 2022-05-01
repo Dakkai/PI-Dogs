@@ -1,10 +1,11 @@
-import { Route, Switch } from "react-router";
-import React, { useEffect} from "react";
+import { Route } from "react-router";
+import React from "react";
 import { useDispatch } from "react-redux";
 import Home from "./components/home";
-import { getDogs } from "../src/redux/actions/";
+
 
 import Landing from "./components/landing";
+import CreateDog from "./components/CretateDog";
 
 function App() {
   const dispatch = useDispatch()
@@ -15,8 +16,7 @@ function App() {
 
       <Route path="/" exact component={Landing} />
       <Route path="/home" component={Home} />
-      <Route path="/create" exact component={Home} />
-      <Route path="/a" exact component={Home} />
+      <Route path="/create" exact component={CreateDog} />
     </div>
   );
 }

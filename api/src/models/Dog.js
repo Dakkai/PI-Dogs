@@ -37,7 +37,7 @@ module.exports = (sequelize) => {
       defaultValue: "DB"
     },
     img:{
-      type: DataTypes.STRING
+      type: DataTypes.TEXT
     }
   });
 };

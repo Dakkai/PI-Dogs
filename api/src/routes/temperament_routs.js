@@ -6,7 +6,9 @@ const { GetDbInfo, GetapiInfo} = require("./controllers")
 
 router.get("/", async (req,res,next)=>{
     try {
-        res.send(await Temperamento.findAll())
+        res.send(await Temperamento.findAll({
+             order: [
+            ['nombre', 'ASC']]}))
         
     } catch (error) {
         next(error)

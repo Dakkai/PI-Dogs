@@ -2,31 +2,30 @@ import React, { useEffect, useState } from "react";
 import { getDogs, orderAsc } from "../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import TempsDetail from "./tempsDetail";
-import placeHolderimg from "../imgs/perritoChiquito.jpg"
-
+import Paginado from "./paginas";
+import placeHolderimg from "../imgs/placeHolder.jpg";
 
 const Dogs = () => {
   const dogs = useSelector((state) => state.actualDogs);
   const dispatch = useDispatch();
-  const [CurrentPage, setCurrentPage]= useState(1)
-  const [DogsPerPage,setDogsPerPage] = useState(8)
-  const LastDog = CurrentPage * DogsPerPage
-  const FirstDog = LastDog - DogsPerPage
-  const Page = dogs.slice(FirstDog,LastDog)
-  console.log(CurrentPage,DogsPerPage)
-  console.log(dogs)
-  console.log(dogs.slice(FirstDog,LastDog))
+  const [CurrentPage, setCurrentPage] = useState(1);
+  const [DogsPerPage, setDogsPerPage] = useState(8);
+  const LastDog = CurrentPage * DogsPerPage;
+  const FirstDog = LastDog - DogsPerPage;
+  const Page = dogs.slice(FirstDog, LastDog);
   
+
   useEffect(() => {
     dispatch(getDogs());
-    
   }, [dispatch]);
-  
-  
-  
- 
+
+  const paginas = (Pag) => {
+    setCurrentPage(Pag);
+  };
+
   return (
     <>
+    <div>
       {Page &&
         Page.map((dog) => (
           <div key={dog.id}>
@@ -34,7 +33,7 @@ const Dogs = () => {
             <TempsDetail dog={dog} />
             <div>
               <img
-                src={dog.imagen || placeHolderimg}
+                src={dog.img || placeHolderimg}
                 alt="not found"
                 style={{ width: 100, height: 100 }}
               />{" "}
@@ -43,6 +42,15 @@ const Dogs = () => {
             <h4>{dog.pesoMin}</h4>
           </div>
         ))}
+        </div>
+        <div> 
+      <Paginado 
+      dogs={dogs}
+       DogsPerPage={DogsPerPage} 
+       paginas={paginas}
+       CurrentPage = {CurrentPage}
+        />
+        </div>
     </>
   );
 };

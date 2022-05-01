@@ -107,7 +107,7 @@ export default function NavBar() {
             <option value="N/A">N/A</option>
             {temps && temps.map(temp => <option key={temp.nombre} value={temp.nombre}>{temp.nombre}</option>)}
           </select>
-          {}
+          
         </>
       )}
     </ul>

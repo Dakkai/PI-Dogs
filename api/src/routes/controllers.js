@@ -18,7 +18,7 @@ module.exports = {
         pesoMax: parseInt(Peso[1]),
         alturamin: parseInt(Altura[0]),
         alturamax: parseInt(Altura[1]),
-        imagen: dog.image.url,
+        img: dog.image.url,
         life_span: dog.life_span,
         Temperamentos: temperament,
         In : "API"
