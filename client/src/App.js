@@ -4,19 +4,19 @@ import { useDispatch } from "react-redux";
 import Home from "./components/home";
 
 
-import Landing from "./components/landing";
+import Landing from "./components/landing/landing";
 import CreateDog from "./components/CretateDog";
+import DogDetail from "./components/DogDetail";
 
 function App() {
   const dispatch = useDispatch()
 
   return (
     <div className="App">
-      <h1>Henry Dogs</h1>
-
       <Route path="/" exact component={Landing} />
       <Route path="/home" component={Home} />
       <Route path="/create" exact component={CreateDog} />
+      <Route path='/Dog/:id'  component={DogDetail}/>
     </div>
   );
 }

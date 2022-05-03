@@ -7,7 +7,7 @@ module.exports = {
     const ApiGet = await axios.get("https://api.thedogapi.com/v1/breeds");
     let dogs = ApiGet.data;
     const dogsmap = dogs.map((dog) => {
-      // const Edad = dog.life_span.split("y")[0].split("-")
+      const Edad = dog.life_span.split("y")[0]
       const Peso = dog.weight.metric.split("-");
       const Altura = dog.height.metric.split("-");
       const temperament = dog.temperament ? dog.temperament.split(",").map(temp => temp.trim()) : null;
@@ -19,7 +19,7 @@ module.exports = {
         alturamin: parseInt(Altura[0]),
         alturamax: parseInt(Altura[1]),
         img: dog.image.url,
-        life_span: dog.life_span,
+        life_span: Edad,
         Temperamentos: temperament,
         In : "API"
       };

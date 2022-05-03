@@ -9,9 +9,12 @@ import {
   NOT_IN_DB,
   GET_TEMPS,
   TEMP,
+  GET_DOG_ID,
+  CLEAR_STATE,
 } from "../actions/actionsType";
 
 const initialState = {
+  DogDetail: {},
   dogs: [],
   actualDogs: [],
   Temperaments: [],
@@ -39,6 +42,11 @@ export default function Reducer(state = initialState, { type, payload }) {
         dogs: Aux,
         actualDogs: Aux,
       };
+      case GET_DOG_ID:
+        return{
+          ...state,
+          DogDetail : payload
+        }
     case GET_TEMPS:
       return {
         ...state,
@@ -127,6 +135,11 @@ export default function Reducer(state = initialState, { type, payload }) {
         ...state,
         actualDogs: Aux2,
       };
+      case CLEAR_STATE:
+        return{
+          ...state,
+          [payload]: {}
+        }
 
     default:
       return state;

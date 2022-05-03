@@ -8,7 +8,7 @@ export async function createDog(data) {
     AlturaMin: data.alturaMin,
     AlturaMax: data.alturaMax,
     img: data.img,
-    life_span: data.life_span,
+    life_span: data.life_span ,
     temperamentos: data.temperamento,
   });
 }
@@ -54,7 +54,7 @@ export function validations(data) {
   }
   // life-span
   if (data.life_span !== 0)
-    if (!/^(\d*)[-](\d+)$/.test(data.life_span)) {
+    if (!/\d*\s[-]\s\d*/.test(data.life_span)) {
       error.life_span = "formato no valido";
     }
   //temperamento

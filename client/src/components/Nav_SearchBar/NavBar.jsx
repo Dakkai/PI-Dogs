@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import paw from "../imgs/pawprint.png";
+import paw from "../../imgs/pawprint.png";
 import {
   orderAsc,
   orderDesc,
@@ -12,8 +12,8 @@ import {
   getDogs,
   getemps,
   TempFilter,
-} from "../redux/actions";
-import SearchBar from "./SearchBar";
+} from "../../redux/actions";
+import SearchBar from "./searchBar.jsx";
 
 export default function NavBar() {
   const [state, setState] = useState(false);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import NavBar from "./NavBar";
+import NavBar from "./Nav_SearchBar/NavBar.jsx";
 import placeHolder from "../imgs/placeHolder.jpg"
 import { createDog, validations } from "./createcomtroller";
  

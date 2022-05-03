@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import TempsDetail from "./tempsDetail";
 import Paginado from "./paginas";
 import placeHolderimg from "../imgs/placeHolder.jpg";
+import { Link } from "react-router-dom";
 
 const Dogs = () => {
   const dogs = useSelector((state) => state.actualDogs);
@@ -29,17 +30,19 @@ const Dogs = () => {
       {Page &&
         Page.map((dog) => (
           <div key={dog.id}>
-            <h2>{dog.name}</h2>
             <TempsDetail dog={dog} />
             <div>
+            <Link to={`/dog/${dog.id}`}>            
+            <h2>{dog.name}</h2>
               <img
                 src={dog.img || placeHolderimg}
                 alt="not found"
                 style={{ width: 100, height: 100 }}
               />{" "}
+            </Link>
             </div>
-            <h4>{dog.pesoMax}</h4>
-            <h4>{dog.pesoMin}</h4>
+            <h4> Peso Maximo{dog.pesoMax}</h4>
+            <h4> Peso Minimo{dog.pesoMin}</h4>
           </div>
         ))}
         </div>

@@ -1,12 +1,11 @@
 import axios from "axios";
-import { GET_DOGS, SEARCH,ORD_ASC,ORD_DESC,PESO_MAX,PESO_MIN,IN_DB, NOT_IN_DB,GET_TEMPS, TEMP} from "./actionsType";
+import { CLEAR_STATE, GET_DOGS, SEARCH,ORD_ASC,ORD_DESC,PESO_MAX,PESO_MIN,IN_DB, NOT_IN_DB,GET_TEMPS, TEMP,GET_DOG_ID} from "./actionsType";
 
 
 export function getDogs() {
   return (dispatch) => {
     return axios
       .get("http://localhost:3001/dogs")
-      .then(console.log("llamada axios"))
       .then(res =>  dispatch({ type: GET_DOGS, payload: res.data }));
   };
 }
@@ -14,9 +13,21 @@ export function getemps() {
   return (dispatch) => {
     return axios
       .get("http://localhost:3001/temperament")
-      .then(console.log("llamada axios"))
       .then(res =>  dispatch({ type: GET_TEMPS, payload: res.data }));
   };
+}
+export function GetDogId(id) {
+  return (dispatch) => {
+    return axios
+      .get(`http://localhost:3001/dogs/${id}`)
+      .then(res =>  dispatch({ type: GET_DOG_ID, payload: res.data[0] }));
+  };
+}
+export function ClearState(State) {
+  return {
+    type:CLEAR_STATE,
+    payload : State
+  }
 }
 
 export function SearchDogs(searching){
