@@ -1,0 +1,100 @@
+.Container {
+  margin: auto;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.navRight {
+  width: 25%;
+  display: flex;
+  align-items: center;
+}
+.navRight li {
+ 
+  padding-inline: 20px;
+}
+.navLeft {
+  display: flex;
+  width: 20%;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+}
+.NavLinks {
+  position: relative;
+  font-weight: 600;
+  font-size: 27px;
+  text-decoration: none;
+  /* background-color: rgb(0 0 0 / 30%); */
+  text-shadow: -1px 1px 0px #000;
+  height: 40px;
+  color: #000;
+  margin: 10px;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.NavLinks:hover {
+  text-shadow: -1px 1px 20px #000;
+}
+
+.Spliter {
+  background: black;
+  margin: 2px;
+  width: 95%;
+  height: 2px;
+  position: relative;
+  left: 2.5%;
+}
+#Button {
+  font-weight: 500;
+  color: #fff;
+  background-color: rgb(0 0 0 / 30%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  opacity: 50%;
+}
+#Button:hover {
+  background-color: rgb(0 0 0 / 100%);
+}
+.filter {
+  width: 50%;
+  margin-left: 2vw;
+  display: flex;
+  right: 90px;
+
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+}
+
+.SearchBar {
+  margin-left: 10px;
+  height: 30px;
+  border-radius: 9px;
+}
+
+.Filterdiv {
+  display: flex;
+  align-items: center;
+  text-shadow: 0px 0px 20px #000;
+  font-size: 20px;
+  font-weight: bold;
+}
+.Filterdiv button {
+  margin: 10px;
+  border-top-left-radius: 30%;
+  border-bottom-right-radius: 30%;
+}
+.Filterdiv select{
+    margin: 10px;
+    border-radius: 5px 20px 15px 20px;
+  }

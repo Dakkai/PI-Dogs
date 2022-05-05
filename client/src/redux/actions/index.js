@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CLEAR_STATE, GET_DOGS, SEARCH,ORD_ASC,ORD_DESC,PESO_MAX,PESO_MIN,IN_DB, NOT_IN_DB,GET_TEMPS, TEMP,GET_DOG_ID} from "./actionsType";
+import { CLEAR_STATE, GET_DOGS, SEARCH,ORD_ASC,ORD_DESC,PESO_MAX,PESO_MIN,IN_DB, NOT_IN_DB,GET_TEMPS, TEMP,GET_DOG_ID, PAGE, SET_PAGE} from "./actionsType";
 
 
 export function getDogs() {
@@ -34,6 +34,19 @@ export function SearchDogs(searching){
   return {
     type:SEARCH,
     payload : searching
+  }
+}
+export function SetPage(pag){
+  return {
+    type:SET_PAGE,
+    payload : pag
+  }
+}
+
+export function SetActualPath(Page){
+  return {
+    type:PAGE,
+    payload : Page
   }
 }
 export function TempFilter(temp){

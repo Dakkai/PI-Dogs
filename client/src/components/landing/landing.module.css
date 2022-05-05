@@ -30,9 +30,13 @@
 #Button{
     background-color: rgba(0,0,0,0.3);
     border-radius: 10px;
+    border:0px;
     height: 95vh;
     width: 100px;
     margin: 1vh;
+}
+#Button:hover{
+    background-color: rgba(0, 0, 0, 0.5);
 }
 #img_btn{
     display: flex;

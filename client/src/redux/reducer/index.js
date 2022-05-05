@@ -11,6 +11,8 @@ import {
   TEMP,
   GET_DOG_ID,
   CLEAR_STATE,
+  PAGE,
+  SET_PAGE,
 } from "../actions/actionsType";
 
 const initialState = {
@@ -18,6 +20,8 @@ const initialState = {
   dogs: [],
   actualDogs: [],
   Temperaments: [],
+  Actualpath: "",
+  Actualpage: 1,
 };
 
 const ASC = (a, b) => {
@@ -42,24 +46,29 @@ export default function Reducer(state = initialState, { type, payload }) {
         dogs: Aux,
         actualDogs: Aux,
       };
-      case GET_DOG_ID:
-        return{
-          ...state,
-          DogDetail : payload
-        }
+    case GET_DOG_ID:
+      return {
+        ...state,
+        DogDetail: payload,
+      };
     case GET_TEMPS:
       return {
         ...state,
         Temperaments: payload,
       };
     case TEMP:
-      console.log(payload)
+      console.log(payload);
       Aux = state.dogs.filter((dog) => {
         if (dog.Temperamentos?.includes(payload)) return dog;
-      })
+      });
       return {
         ...state,
         actualDogs: Aux,
+      };
+    case SET_PAGE:
+      return {
+        ...state,
+        Actualpage: payload,
       };
     case SEARCH:
       Aux = state.dogs.filter((dog) => {
@@ -135,11 +144,16 @@ export default function Reducer(state = initialState, { type, payload }) {
         ...state,
         actualDogs: Aux2,
       };
-      case CLEAR_STATE:
-        return{
-          ...state,
-          [payload]: {}
-        }
+    case CLEAR_STATE:
+      return {
+        ...state,
+        [payload]: {},
+      };
+    case PAGE:
+      return {
+        ...state,
+        Actualpath: payload,
+      };
 
     default:
       return state;

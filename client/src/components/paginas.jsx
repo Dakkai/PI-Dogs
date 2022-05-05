@@ -10,14 +10,14 @@ export default function Paginado({dogs, DogsPerPage, paginas,CurrentPage}) {
     pages.push(i);
   }
   return (
-    <><nav>
-        <ul>
-            {pages&&pages.map(page=><li>
+    <>
+        <ul style={{display: "flex", justifyContent: "space-evenly", margin: "0px"}}>
+            {pages&&pages.map(page=><li style={{display:"flex"}}>
                 
-                <a onClick={()=>{paginas(page)}} ><img src={CurrentPage === page?activePAG:NotActivePAG} alt="" />{page}</a>
+                <a onClick={()=>{paginas(page)}} ><img src={CurrentPage === page?activePAG:NotActivePAG} alt="pages" /></a>
             </li>)}
         </ul>
-    </nav>
+    
     </>
   );
 }

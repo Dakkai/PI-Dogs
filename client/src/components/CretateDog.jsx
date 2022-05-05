@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NavBar from "./Nav_SearchBar/NavBar.jsx";
 import placeHolder from "../imgs/placeHolder.jpg"
 import { createDog, validations } from "./createcomtroller";
+import { ClearState, SetActualPath } from "../redux/actions/index.js";
  
 
 export default function CreateDog() {
   const temps = useSelector((state) => state.Temperaments);
+
   const dispatch = useDispatch()
 
   const [data, setData] = useState({
@@ -28,7 +30,16 @@ export default function CreateDog() {
     life_span: "campo vacio",
     temperamento: "campo vacio"
   });
-  // nombre no numeros /^[a-zñ A-ZÑ]+$/
+  
+ 
+  useEffect(() => {
+    dispatch(SetActualPath("Create"));
+
+    return () => { 
+      dispatch(ClearState("Actualpath"))
+    } 
+  }, [dispatch]);
+
 
   
 
@@ -81,7 +92,7 @@ export default function CreateDog() {
   return (
     <div>
       <NavBar />
-      <img src={data.img||placeHolder}/>
+      <img src={data.img||placeHolder} alt=""/>
       <form onSubmit={handleSubmit}>
         <div>
           <label>

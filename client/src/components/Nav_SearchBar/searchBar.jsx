@@ -1,20 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { getDogs ,SearchDogs } from "../../redux/actions";
+import React from "react";
+import { useDispatch} from "react-redux";
+import { useHistory } from "react-router-dom";
+
+import { SearchDogs } from "../../redux/actions";
+import style from "./NavBar.module.css"
 
 const SearchBar = () => {
  const dispatch = useDispatch()
-
+ const history = useHistory()
 
   function handleChange(e) {
     e.preventDefault();
     dispatch(SearchDogs(e.target.value))
   }
 
+  function onClick(e) {
+    e.preventDefault()
+    history.push("/home")
+  }
+
+
+
   return (
     <>
-      <input style={{margin: 10}}type="text" placeholder="busqueda..." onChange={handleChange}  />
+      <input className={style.SearchBar} type="text" placeholder="   busqueda..." onClick={onClick} onChange={handleChange}  />
     </>
   );
 };

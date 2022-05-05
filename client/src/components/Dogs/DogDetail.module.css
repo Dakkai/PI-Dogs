@@ -1,0 +1,43 @@
+.Conteiner {
+  padding: 50px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+.DataConteiner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.dataDiv {
+  display: flex;
+}
+.dataDiv h4 {
+  padding: 5px;
+}
+
+#DogImg {
+  border-radius: 80px;
+  width: 50%;
+  height: 50%;
+}
+
+.Temps {
+    border-radius: 10px;
+  overflow: scroll;
+  height: 100px;
+  width: 80%;
+  display: flex;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  flex-wrap: wrap;
+  padding: 5px;
+  justify-content: space-between;
+}
+.temp {
+  padding: 0px;
+  margin: 5px;
+}

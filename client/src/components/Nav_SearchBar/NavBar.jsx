@@ -14,20 +14,20 @@ import {
   TempFilter,
 } from "../../redux/actions";
 import SearchBar from "./searchBar.jsx";
+import style from "./NavBar.module.css";
 
 export default function NavBar() {
   const [state, setState] = useState(false);
-  const [filter, setFilter] = useState("a-z");
-  const [filter2, setFilter2] = useState("↑");
+  const [filter, setFilter] = useState("A Z");
+  const [filter2, setFilter2] = useState("Mas Pesado");
   const temps = useSelector((state) => state.Temperaments);
+  const ActualPath = useSelector((state) => state.Actualpath);
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     dispatch(getemps());
     console.log(temps);
   }, [dispatch]);
-
 
   function onclick(e) {
     e.preventDefault();
@@ -35,81 +35,116 @@ export default function NavBar() {
   }
   function alphabeticFilter(e) {
     e.preventDefault();
-    if (e.target.value === "a-z") {
-      setFilter("z-a");
+    if (e.target.value === "A Z") {
+      setFilter("Z A");
       dispatch(orderAsc());
     } else {
-      setFilter("a-z");
+      setFilter("A Z");
       dispatch(orderDesc());
     }
   }
   function weightfilter(e) {
     e.preventDefault();
-    if (e.target.value === "↑") {
-      setFilter2("↓");
+    if (e.target.value === "Mas Pesado") {
+      setFilter2("Mas ligero");
       dispatch(weightDown());
     } else {
-      setFilter2("↑");
+      setFilter2("Mas Pesado");
       dispatch(weightUp());
     }
   }
   function procedenceFilter(e) {
-    e.preventDefault()
+    e.preventDefault();
     console.log(e.target.value);
     let index = e.target.selectedIndex;
     console.log(e.target.options[index]);
-    if(e.target.value === "DB"){
-      dispatch(FilterDB())
+    if (e.target.value === "DB") {
+      dispatch(FilterDB());
     }
-    if(e.target.value === "api"){
-      dispatch(FilterAPI())
+    if (e.target.value === "api") {
+      dispatch(FilterAPI());
     }
-    if(e.target.value === "ALL"){
-      dispatch(getDogs())
+    if (e.target.value === "ALL") {
+      dispatch(getDogs());
     }
   }
-  function onSelect(e){
-    e.preventDefault()
-    if(e.target.value === "N/A") dispatch(getDogs())
-    dispatch(TempFilter(e.target.value))
+  function onSelect(e) {
+    e.preventDefault();
+    if (e.target.value === "N/A") dispatch(getDogs());
+    dispatch(TempFilter(e.target.value));
   }
 
   return (
-    <ul style={{ display: "flex" }}>
-      <SearchBar />
-      <li style={{ padding: 10, display: "flex" }}>
-        <Link to="/home">
-          <img src={paw} alt="home buton" style={{ width: 30, height: 30 }} />
-        </Link>
-      </li>
-      <li style={{ padding: 10, display: "flex" }}>
-        <Link to="/">landing</Link>
-      </li>
-      <li style={{ padding: 10, display: "flex" }}>
-        <Link to="/create">Create</Link>
-      </li>
-      <button onClick={onclick}>pressme</button>
-      {state && (
-        <>
-          <button value={filter} onClick={alphabeticFilter}>
-            {filter}
-          </button>
-          <button value={filter2} onClick={weightfilter}>
-            {filter2}
-          </button>
-          <select onChange={procedenceFilter}>
-            <option value="ALL">ALL</option>
-            <option value="DB">DB</option>
-            <option value="api">API</option>
-          </select>
-            <button>a</button>
-          <select onChange={onSelect}>
-            <option value="N/A">N/A</option>
-            {temps && temps.map(temp => <option key={temp.nombre} value={temp.nombre}>{temp.nombre}</option>)}
-          </select>
-          
-        </>
-      )}
-    </ul>
+    <>
+    <div>
+
+      <ul className={style.Container}>
+        <div className={style.navRight}>
+          <li style={{ paddingLeft: 0 }} className={style.navRight}>
+            <Link to="/">
+              <img
+                src={paw}
+                alt="home buton"
+                style={{ borderRadius : 100, width: 40, height: 40 }}
+              />
+            </Link>
+          </li>
+          <li className={style.navRight}>
+            <Link className={style.NavLinks} to="/home">
+              Home
+            </Link>
+          </li>
+          <li className={style.navRight}>
+            <Link className={style.NavLinks} to="/create">
+              Create
+            </Link>
+          </li>
+        </div>
+        <div className={style.navLeft}>
+          <SearchBar className={style.SearchBar} />
+          {ActualPath !== "Create" && ActualPath !== "Detail" && (
+            <button className={style.NavLinks} style={{border:"none"}} onClick={onclick}>
+              Filtros
+            </button>
+          )}
+        </div>
+        {state && (
+          <>
+            <div className={style.filter}>
+              <div className={style.Filterdiv}> filtrar alfabeticamente
+                <button style={{"width": "100%"}} value={filter} onClick={alphabeticFilter}>
+                  {filter}
+                </button>
+              </div>
+              <div className={style.Filterdiv}> filtrar peso
+                <button  value={filter2} onClick={weightfilter}>
+                  {filter2}
+                </button>
+              </div>
+              <div className={style.Filterdiv}>  creado en: 
+                <select  onChange={procedenceFilter}>
+                  <option value="ALL">ALL</option>
+                  <option value="DB">DB</option>
+                  <option value="api">API</option>
+                </select>
+                </div >
+                <div className={style.Filterdiv}> temperamentos
+                <select  onChange={onSelect}>
+                  <option value="N/A">N/A</option>
+                  {temps &&
+                    temps.map((temp) => (
+                      <option key={temp.nombre} value={temp.nombre}>
+                        {temp.nombre}
+                      </option>
+                    ))}
+                </select>
+              </div>
+            </div>
+          </>
+        )}
+      </ul>
+      <div className={style.Spliter} />
+        </div>
+    </>
   );
 }
