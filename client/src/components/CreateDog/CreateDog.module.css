@@ -1,0 +1,45 @@
+.Conteiner{
+    display: flex;
+    margin: 15px;
+    margin-bottom: 0px;
+    height: 90vh;
+    width: 100vw;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+  
+}
+
+#dogImg{
+    border-radius: 80px;
+    width: 50%;
+    height: 90%;
+}
+
+.DogForm{
+    display: flex;
+    align-items: center;
+    padding-bottom: 15px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.TempConteiner{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 20%;
+    overflow: scroll;
+    justify-content: space-around;
+} 
+.temp{
+    background-color: transparent;
+    border-radius: 5px;
+    font-size: 20px;
+    height: 10%;
+}
+
+.errDiv{
+    padding-block-start: 15px;
+    color: crimson;
+}

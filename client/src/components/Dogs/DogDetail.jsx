@@ -31,14 +31,15 @@ export default function DogDetail(props) {
     <NavBar/>
       {Dog.name ? (
         <>
+        
           <div className={style.Conteiner}>
             <div className={style.DataConteiner}>
               <h1>{Dog.name}</h1>
               <h2>Esta raza:</h2>
               <h3> Puede vivir aproximadamente {Dog.life_span} Años </h3>
               <div className={style.dataDiv}>
-                <h4> puede medir desde {Dog.alturamin} CM</h4>
-                <h4> hasta {Dog.alturamax} CM</h4>
+                <h4> puede medir desde {Dog.alturaMin} CM</h4>
+                <h4> hasta {Dog.alturaMax} CM</h4>
               </div>
               <div className={style.dataDiv}>
                 <h4>puede pesar desde {Dog.pesoMin}KG </h4>

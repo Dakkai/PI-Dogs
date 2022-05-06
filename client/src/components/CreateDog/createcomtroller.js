@@ -1,12 +1,13 @@
 import axios from "axios";
 
 export async function createDog(data) {
+  console.log(data)
   return await axios.post("http://localhost:3001/dogs", {
     name: data.name,
-    pesoMax: data.pesoMax,
-    pesoMin: data.pesoMin,
-    AlturaMin: data.alturaMin,
-    AlturaMax: data.alturaMax,
+    pesoMax: parseInt(data.pesoMax),
+    pesoMin: parseInt(data.pesoMin),
+    alturaMin: parseInt(data.alturaMin),
+    alturaMax: parseInt(data.alturaMax),
     img: data.img,
     life_span: data.life_span ,
     temperamentos: data.temperamento,
@@ -59,7 +60,7 @@ export function validations(data) {
     }
   //temperamento
   if (data.temperamento.length === 0) {
-    error.temperamento = "debe añardir al menos un temperamento";
+    error.temperamento = "debe añardir al menos dos temperamentos";
   }
   return error;
 }

@@ -32,7 +32,6 @@ const Dogs = () => {
           {Page ?
             Page.map((dog) => (
               <Link className={style.DogAncor} to={`/dog/${dog.id}`}>
-                <div className={style.DogLink} style={{position: "relative"}}>
                   <div className={style.DogContain} >
                     <div className={style.DogCard} key={dog.id}>
                       {console.log(dog.img)}
@@ -49,7 +48,6 @@ const Dogs = () => {
                       <TempsDetail dog={dog} />
                     </div>
                   </div>
-                </div>
               </Link>
             )):<img style={{height: "80vh",width: "100vw"}} src={Loading} alt="" />}
         </div>

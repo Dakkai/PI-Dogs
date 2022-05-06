@@ -13,11 +13,11 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
-    AlturaMax:{
+    alturaMax:{
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    AlturaMin:{
+    alturaMin:{
       type: DataTypes.INTEGER,
       allowNull: false
     },

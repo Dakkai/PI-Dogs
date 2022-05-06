@@ -4,7 +4,7 @@
 }
 
 .Temps{
-    overflow: scroll;
+    overflow-y: auto;
     height: 100px;
     width: 80%;
     display: flex;
@@ -12,6 +12,7 @@
     color: white;
     flex-wrap: wrap;
     padding: 5px;
+    border-radius: 10px;
     justify-content: space-between;
 
 }

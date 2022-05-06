@@ -78,7 +78,7 @@ export default function NavBar() {
     <>
     <div>
 
-      <ul className={style.Container}>
+      <nav className={style.Container}>
         <div className={style.navRight}>
           <li style={{ paddingLeft: 0 }} className={style.navRight}>
             <Link to="/">
@@ -99,7 +99,6 @@ export default function NavBar() {
               Create
             </Link>
           </li>
-        </div>
         <div className={style.navLeft}>
           <SearchBar className={style.SearchBar} />
           {ActualPath !== "Create" && ActualPath !== "Detail" && (
@@ -107,6 +106,7 @@ export default function NavBar() {
               Filtros
             </button>
           )}
+        </div>
         </div>
         {state && (
           <>
@@ -142,7 +142,7 @@ export default function NavBar() {
             </div>
           </>
         )}
-      </ul>
+      </nav>
       <div className={style.Spliter} />
         </div>
     </>
