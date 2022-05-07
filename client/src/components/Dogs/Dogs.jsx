@@ -19,6 +19,8 @@ const Dogs = () => {
   useEffect(() => {
     console.log(Page)
     dispatch(getDogs());
+    setCurrentPage(1);
+
   }, [dispatch]);
 
   const paginas = (Pag) => {

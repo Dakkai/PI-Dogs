@@ -29,6 +29,7 @@ export default function CreateDog() {
     pesoMin: "campo vacio",
     life_span: "campo vacio",
     temperamento: "campo vacio",
+    img: "",
   });
 
   useEffect(() => {
@@ -47,6 +48,12 @@ export default function CreateDog() {
       };
       setErrors(validations(newstate));
       return newstate;
+    });
+  }
+  function OnErrorImg() {
+    setErrors({
+      ...error,
+      img: "coloque una imagen valida o deje el campo vacio",
     });
   }
 
@@ -70,6 +77,7 @@ export default function CreateDog() {
   async function handleSubmit(e) {
     e.preventDefault();
     if (
+      error.img ||
       error.name ||
       error.alturaMin ||
       error.alturaMax ||
@@ -79,20 +87,32 @@ export default function CreateDog() {
       error.temperamento
     ) {
       alert("Algo salio mal");
-    } else {createDog(data)
-       alert("Raza creada")}
+    } else {
+      createDog(data);
+      alert("Raza creada");
+    }
   }
 
   return (
     <>
       <NavBar />
       <div className={style.Conteiner}>
-        <img id={style.dogImg} src={data.img || placeHolder} alt="" />
+        <img
+          id={style.dogImg}
+          onError={OnErrorImg}
+          src={data.img || placeHolder}
+          alt=""
+        />
         <form className={style.DogForm} onSubmit={handleSubmit}>
           <div>
             <label>
               nombre{" "}
-              <input placeholder="..." type="text" name="name" onChange={handleChange} />
+              <input
+                placeholder="Husky..."
+                type="text"
+                name="name"
+                onChange={handleChange}
+              />
               {error.name && error.name !== "campo vacio" ? (
                 <div className={style.errDiv}>{error.name}</div>
               ) : (
@@ -103,7 +123,12 @@ export default function CreateDog() {
           <div>
             <label>
               altura maxina{" "}
-              <input placeholder="..." type="number" name="alturaMax" onChange={handleChange} />{" "}
+              <input
+                placeholder="60..."
+                type="number"
+                name="alturaMax"
+                onChange={handleChange}
+              />{" "}
               CM
               {error.alturaMax && error.alturaMax !== "campo vacio" ? (
                 <div className={style.errDiv}>{error.alturaMax}</div>
@@ -115,7 +140,12 @@ export default function CreateDog() {
           <div>
             <label>
               altura minima{" "}
-              <input placeholder="..." type="number" name="alturaMin" onChange={handleChange} />{" "}
+              <input
+                placeholder="30..."
+                type="number"
+                name="alturaMin"
+                onChange={handleChange}
+              />{" "}
               CM
               {error.alturaMin && error.alturaMin !== "campo vacio" ? (
                 <div className={style.errDiv}>{error.alturaMin}</div>
@@ -127,7 +157,12 @@ export default function CreateDog() {
           <div>
             <label>
               peso maximo{" "}
-              <input placeholder="..." type="number" name="pesoMax" onChange={handleChange} />{" "}
+              <input
+                placeholder="10..."
+                type="number"
+                name="pesoMax"
+                onChange={handleChange}
+              />{" "}
               KG
               {error.pesoMax && error.pesoMax !== "campo vacio" ? (
                 <div className={style.errDiv}>{error.pesoMax}</div>
@@ -139,7 +174,12 @@ export default function CreateDog() {
           <div>
             <label>
               peso minimo{" "}
-              <input placeholder="..." type="number" name="pesoMin" onChange={handleChange} />{" "}
+              <input
+                placeholder="5..."
+                type="number"
+                name="pesoMin"
+                onChange={handleChange}
+              />{" "}
               KG
               {error.pesoMin && error.pesoMin !== "campo vacio" ? (
                 <div className={style.errDiv}>{error.pesoMin}</div>
@@ -151,7 +191,12 @@ export default function CreateDog() {
           <div>
             <label>
               puede vivir entre{" "}
-              <input placeholder=" 5 - 10  " type="text" name="life_span" onChange={handleChange} />{" "}
+              <input
+                placeholder=" 5 - 10...  "
+                type="text"
+                name="life_span"
+                onChange={handleChange}
+              />{" "}
               Años
               {error.life_span && error.life_span !== "campo vacio" ? (
                 <div className={style.errDiv}>{error.life_span}</div>
@@ -162,10 +207,23 @@ export default function CreateDog() {
           </div>
           <div>
             <label>
-              Imagen{" "}<input placeholder="..." type="text" name="img" onChange={handleChange} />
+              Imagen{" "}
+              <input
+                placeholder="url"
+                type="text"
+                name="img"
+                onChange={handleChange}
+              />
+              {error.img ? (
+                <div className={style.errDiv}>{error.img}</div>
+              ) : (
+                <></>
+              )}
             </label>
           </div>
-          <div> Temperamentos{" "}
+          <div>
+            {" "}
+            Temperamentos{" "}
             <select onChange={onSelect}>
               {temps &&
                 temps.map((temp) => (
@@ -181,19 +239,19 @@ export default function CreateDog() {
             )}
           </div>
           <div>
-            <input type="submit" value="enviar" />
+            <input type="submit" value="Crear" />
           </div>
         </form>
         <div className={style.TempConteiner}>
-        {data.temperamento &&
-          data.temperamento.map((temp) => (
-            <>
-              <button className={style.temp} value={temp} onClick={onClick}>
-              {temp}
-              </button>
-            </>
-          ))}
-          </div>
+          {data.temperamento &&
+            data.temperamento.map((temp) => (
+              <>
+                <button className={style.temp} value={temp} onClick={onClick}>
+                  {temp}
+                </button>
+              </>
+            ))}
+        </div>
       </div>
     </>
   );

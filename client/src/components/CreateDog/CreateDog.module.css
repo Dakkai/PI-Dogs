@@ -16,13 +16,17 @@
     height: 90%;
 }
 
-.DogForm{
+.DogForm {
     display: flex;
     align-items: center;
     padding-bottom: 15px;
     flex-direction: column;
     justify-content: space-between;
 }
+.DogForm input, select{
+    border-radius: 8px;
+}
+
 .TempConteiner{
     display: flex;
     flex-direction: row;

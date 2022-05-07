@@ -26,36 +26,36 @@ export function validations(data) {
     }
   }
   //altura
-  if (!data.alturaMax) {
+  if (!data.alturaMax || data.alturaMax <= 0) {
     error.alturaMax = "la altura es requerida";
   }
-  if (!data.alturaMin) {
+  if (!data.alturaMin || data.alturaMin <= 0) {
     error.alturaMin = "la altura es requerida";
   }
   if (parseInt(data.alturaMax) <= parseInt(data.alturaMin)) {
     error.alturaMax =
-      "la altura maxima no puede ser menor nu igual a la minima";
+      "la altura maxima no puede ser menor o igual a la minima";
   }
   if (parseInt(data.alturaMin) >= parseInt(data.alturaMax)) {
     error.alturaMin =
-      "la altura minima no puede ser mayor ni igual a la maxima";
+      "la altura minima no puede ser mayor o igual a la maxima";
   }
   //peso
-  if (!data.pesoMax) {
+  if (!data.pesoMax || data.pesoMax <= 0) {
     error.pesoMax = "el peso es requerido";
   }
-  if (!data.pesoMin) {
+  if (!data.pesoMin || data.pesoMin <= 0 ) {
     error.pesoMin = "el peso es requerido";
   }
   if (parseInt(data.pesoMax) <= parseInt(data.pesoMin)) {
-    error.pesoMax = "el peso maximo no puede ser menor ni igual al minimo";
+    error.pesoMax = "el peso maximo no puede ser menor o igual al minimo";
   }
   if (parseInt(data.pesoMin) >= parseInt(data.pesoMax)) {
-    error.pesoMin = "el peso minimo no puede ser mayor ni igual al maximo";
+    error.pesoMin = "el peso minimo no puede ser mayor o igual al maximo";
   }
   // life-span
   if (data.life_span !== 0)
-    if (!/\d*\s[-]\s\d*/.test(data.life_span)) {
+    if (!/^\d+\s[-]\s\d+$/.test(data.life_span)) {
       error.life_span = "formato no valido";
     }
   //temperamento
