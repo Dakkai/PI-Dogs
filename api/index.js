@@ -20,7 +20,7 @@
 const axios = require('axios');
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const {Temperamento } = require("../api/src/db");
+const {Temperamento } = require("./src/db");
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(async () => {

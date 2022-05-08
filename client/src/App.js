@@ -21,7 +21,6 @@ function App() {
       </Route>
       <Route path="/create" exact component={CreateDog} />
       <Route path='/Dog/:id' exact  component={DogDetail}/>
-      {/* <Route path='*' exact  component={NotFound}/> */}
 
       </Switch>
     </div>

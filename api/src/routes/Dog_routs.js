@@ -73,7 +73,7 @@ router.post("/", async (req,res,next)=>{
             img,
             In
         })
-        console.log(temperamentos)
+
         temperamentos.map(async el => createdDog.addTemperamento( await Temperamento.findOne({
             where:{nombre : el}
         })))

@@ -36,7 +36,6 @@ module.exports = {
     })
     const DogsDB = Dbget.map(dog=> {
      let temps = dog.Temperamentos.map(temp=> {return temp.nombre})
-     console.log(temps)
       return{
         id: dog.id,
         name: dog.name.toLowerCase(),
@@ -57,11 +56,4 @@ module.exports = {
   },
 
 };
-// nopmbre temperamento peso imagen altura años de vida id
 
-// const GetapiInfo = async ()=>{
-//     const ApiGet = await axios.get("https://api.thedogapi.com/v1/breeds")
-//     const ApiData = await ApiGet.data
-//     console.log(ApiData)
-// }
-// GetapiInfo()

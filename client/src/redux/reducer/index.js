@@ -57,7 +57,6 @@ export default function Reducer(state = initialState, { type, payload }) {
         Temperaments: payload,
       };
     case TEMP:
-      console.log(payload);
       Aux = state.dogs.filter((dog) => {
         if (dog.Temperamentos?.includes(payload)) return dog;
       });
@@ -74,7 +73,6 @@ export default function Reducer(state = initialState, { type, payload }) {
       Aux = state.dogs.filter((dog) => {
         if (dog.name.toLowerCase().includes(payload.toLowerCase())) return dog;
       });
-      console.log(Aux);
       return {
         ...state,
         actualDogs: Aux,
@@ -85,10 +83,7 @@ export default function Reducer(state = initialState, { type, payload }) {
           return dog;
         }
       });
-      console.log("DB :me LAmmaron /n", Aux2);
       Aux2 = Aux.map((dog) => dog);
-      console.log(Aux2);
-
       return {
         ...state,
         actualDogs: Aux2,
@@ -99,9 +94,7 @@ export default function Reducer(state = initialState, { type, payload }) {
           return dog;
         }
       });
-      console.log("API:me LAmmaron /n");
       Aux2 = Aux.map((dog) => dog);
-      console.log(Aux2[0]);
       return {
         ...state,
         actualDogs: Aux2,
