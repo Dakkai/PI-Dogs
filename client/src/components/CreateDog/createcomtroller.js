@@ -58,8 +58,8 @@ export function validations(data) {
       error.life_span = "formato no valido";
     }
   //temperamento
-  if (data.temperamento.length < 2) {
-    error.temperamento = "debe añardir al menos un temperamentos";
+  if (data.temperamento.length <= 1) {
+    error.temperamento = "debe añardir al menos dos temperamentos";
   }
   return error;
 }

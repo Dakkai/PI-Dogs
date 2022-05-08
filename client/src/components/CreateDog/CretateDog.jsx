@@ -60,17 +60,26 @@ export default function CreateDog() {
   function onSelect(e) {
     const buscar = data.temperamento.find((temp) => temp === e.target.value);
     if (!buscar) {
-      setData({
-        ...data,
-        temperamento: [...data.temperamento, e.target.value],
+      setData(() => {
+        const newstate = {
+          ...data,
+          temperamento: [...data.temperamento, e.target.value],
+        };
+        setErrors(validations(newstate));
+        return newstate;
       });
-      setErrors(validations({ ...data }));
     }
   }
   function onClick(e) {
-    setData({
-      ...data,
-      temperamento: data.temperamento.filter((temp) => temp !== e.target.value),
+    setData(() => {
+      const newstate = {
+        ...data,
+        temperamento: data.temperamento.filter(
+          (temp) => temp !== e.target.value
+        ),
+      };
+      setErrors(validations(newstate));
+      return newstate
     });
   }
 
