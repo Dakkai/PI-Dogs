@@ -24,7 +24,6 @@ export default function DogDetail(props) {
     };
   }, [dispatch, id]);
 
-  console.log(Dog);
 
   return (
     <>

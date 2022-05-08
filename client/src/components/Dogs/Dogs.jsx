@@ -17,7 +17,6 @@ const Dogs = () => {
   const Page = dogs.slice(FirstDog, LastDog);
 
   useEffect(() => {
-    console.log(Page)
     dispatch(getDogs());
     setCurrentPage(1);
 
@@ -36,7 +35,7 @@ const Dogs = () => {
               <Link className={style.DogAncor} to={`/dog/${dog.id}`}>
                   <div className={style.DogContain} >
                     <div className={style.DogCard} key={dog.id}>
-                      {console.log(dog.img)}
+
                       <img
                         src={dog.img || placeHolderimg}
                         alt="not found"

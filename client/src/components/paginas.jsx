@@ -8,7 +8,6 @@ export default function Paginado({dogs, DogsPerPage, paginas,CurrentPage}) {
   }, [dogs])
 
   let pages = [];
-  console.log()
   for (let i = 1; i <= (dogs.length / DogsPerPage); i++) {
     pages.push(i);
   }

@@ -26,7 +26,6 @@ export default function NavBar() {
 
   useEffect(() => {
     dispatch(getemps());
-    console.log(temps);
   }, [dispatch]);
 
   function onclick(e) {
@@ -55,9 +54,8 @@ export default function NavBar() {
   }
   function procedenceFilter(e) {
     e.preventDefault();
-    console.log(e.target.value);
+
     let index = e.target.selectedIndex;
-    console.log(e.target.options[index]);
     if (e.target.value === "DB") {
       dispatch(FilterDB());
     }

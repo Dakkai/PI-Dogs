@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export async function createDog(data) {
-  console.log(data)
   return await axios.post("/dogs", {
     name: data.name,
     pesoMax: parseInt(data.pesoMax),
