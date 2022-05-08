@@ -5,21 +5,21 @@ import { CLEAR_STATE, GET_DOGS, SEARCH,ORD_ASC,ORD_DESC,PESO_MAX,PESO_MIN,IN_DB,
 export function getDogs() {
   return (dispatch) => {
     return axios
-      .get("http://localhost:3001/dogs")
+      .get("/dogs")
       .then(res =>  dispatch({ type: GET_DOGS, payload: res.data }));
   };
 }
 export function getemps() {
   return (dispatch) => {
     return axios
-      .get("http://localhost:3001/temperament")
+      .get("/temperament")
       .then(res =>  dispatch({ type: GET_TEMPS, payload: res.data }));
   };
 }
 export function GetDogId(id) {
   return (dispatch) => {
     return axios
-      .get(`http://localhost:3001/dogs/${id}`)
+      .get(`/dogs/${id}`)
       .then(res =>  dispatch({ type: GET_DOG_ID, payload: res.data[0] }));
   };
 }

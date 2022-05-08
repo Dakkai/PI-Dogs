@@ -23,7 +23,6 @@ const { conn } = require('./src/db.js');
 const {Temperamento } = require("../api/src/db");
 
 // Syncing all the models at once.
-
 conn.sync({ force: true }).then(async () => {
   const ApiGet = await axios.get("https://api.thedogapi.com/v1/breeds");
   let dogs = ApiGet.data;
@@ -42,6 +41,6 @@ conn.sync({ force: true }).then(async () => {
       }
   }))
   server.listen(process.env.PORT, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+    console.log('% listening at 3001'); // eslint-disable-line no-console
   });
 });
