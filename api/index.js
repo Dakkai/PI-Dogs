@@ -23,6 +23,7 @@ const { conn } = require('./src/db.js');
 const {Temperamento } = require("../api/src/db");
 
 // Syncing all the models at once.
+
 conn.sync({ force: true }).then(async () => {
   const ApiGet = await axios.get("https://api.thedogapi.com/v1/breeds");
   let dogs = ApiGet.data;
