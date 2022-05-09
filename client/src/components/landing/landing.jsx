@@ -12,11 +12,7 @@ export default function Landing() {
         <img id={style.img} src={img} alt="alt" />
         </div>
         <div id={style.tittle_Div}>
-          <h1>PlaceHolder Name</h1>
-          <span>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto
-            esse,{" "}
-          </span>
+          <h1> Dokipedia </h1>
         </div>
         <div id={style.Button_Div}>
           <Link to="/home">
