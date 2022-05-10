@@ -56,6 +56,7 @@ export default function Reducer(state = initialState, { type, payload }) {
         ...state,
         Temperaments: payload,
       };
+      
     case TEMP:
       Aux = state.dogs.filter((dog) => {if (dog.Temperamentos?.includes(payload)) return dog});
       return {
