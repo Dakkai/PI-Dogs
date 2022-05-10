@@ -55,7 +55,6 @@ export default function NavBar() {
   function procedenceFilter(e) {
     e.preventDefault();
 
-    let index = e.target.selectedIndex;
     if (e.target.value === "DB") {
       dispatch(FilterDB());
     }

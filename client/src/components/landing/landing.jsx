@@ -1,4 +1,4 @@
-import react from "react";
+
 import { Link } from "react-router-dom";
 import img from "../../imgs/landing2.png";
 import flecha from "../../imgs/right-arrow.png";

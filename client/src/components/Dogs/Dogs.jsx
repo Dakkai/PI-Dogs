@@ -11,7 +11,7 @@ const Dogs = () => {
   const dogs = useSelector((state) => state.actualDogs);
   const dispatch = useDispatch();
   const [CurrentPage, setCurrentPage] = useState(1);
-  const [DogsPerPage, setDogsPerPage] = useState(8);
+  const [DogsPerPage] = useState(8);
   const LastDog = CurrentPage * DogsPerPage;
   const FirstDog = LastDog - DogsPerPage;
   const Page = dogs.slice(FirstDog, LastDog);
@@ -32,7 +32,7 @@ const Dogs = () => {
         <div className={style.DogsContainer}>
           {Page ?
             Page.map((dog) => (
-              <Link className={style.DogAncor} to={`/dog/${dog.id}`}>
+              <Link key={dog.id} className={style.DogAncor} to={`/dog/${dog.id}`}>
                   <div className={style.DogContain} >
                     <div className={style.DogCard} key={dog.id}>
 

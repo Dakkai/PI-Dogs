@@ -57,9 +57,7 @@ export default function Reducer(state = initialState, { type, payload }) {
         Temperaments: payload,
       };
     case TEMP:
-      Aux = state.dogs.filter((dog) => {
-        if (dog.Temperamentos?.includes(payload)) return dog;
-      });
+      Aux = state.dogs.filter((dog) => {if (dog.Temperamentos?.includes(payload)) return dog});
       return {
         ...state,
         actualDogs: Aux,
@@ -70,29 +68,20 @@ export default function Reducer(state = initialState, { type, payload }) {
         Actualpage: payload,
       };
     case SEARCH:
-      Aux = state.dogs.filter((dog) => {
-        if (dog.name.toLowerCase().includes(payload.toLowerCase())) return dog;
-      });
+      Aux = state.dogs.filter((dog) => { if (dog.name.toLowerCase().includes(payload.toLowerCase())) return dog;});
       return {
         ...state,
         actualDogs: Aux,
       };
     case IN_DB:
-      Aux = state.dogs.filter((dog) => {
-        if (dog.In === "DB") {
-          return dog;
-        }
-      });
+      Aux = state.dogs.filter((dog) => {if (dog.In === "DB") return dog; });
       Aux2 = Aux.map((dog) => dog);
       return {
         ...state,
         actualDogs: Aux2,
       };
     case NOT_IN_DB:
-      Aux = state.dogs.filter((dog) => {
-        if (dog.In === "API") {
-          return dog;
-        }
+      Aux = state.dogs.filter((dog) => {if (dog.In === "API") {return dog;}
       });
       Aux2 = Aux.map((dog) => dog);
       return {
