@@ -8,10 +8,6 @@ export default function Home() {
 
   
 
-  // Onclick ()=>{
-
-  // }
-
   return (
     <>
       <NavBar/>

@@ -4,9 +4,6 @@ import NotActivePAG from "../imgs/bx-radio-circle.png"
 
 export default function Paginado({dogs, DogsPerPage, paginas,CurrentPage}) {
 
-  //  useEffect(() => {
-  //   paginas(1)
-  // }, [dogs])
 
   let pages = [];
   for (let i = 1; i <= (dogs.length / DogsPerPage); i++) {
